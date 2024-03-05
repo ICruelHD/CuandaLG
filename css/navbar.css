@@ -1,0 +1,167 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0
+}
+
+body {
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+/*------------------------------------ NavBar ---------------------------------------- */
+.navbar {
+    display: block;
+    justify-self: center;
+    background-color: #065da6;
+    padding: 0;
+    max-width: 100%;
+}
+
+.navbar .container {
+    max-width: 85%;
+    padding: 0px;
+    align-items: center;
+}
+
+.collapse .navbar-nav {
+    max-width: 80%;
+    justify-content: center;
+    align-items: center;
+    font-size: .9em;
+    margin-left: 5%;
+}
+
+#navbarNav li a {
+    display: flex;
+    text-align: center;
+    color: #ffffff;
+    transition: 0.7s;
+    justify-content: center;
+}
+
+#navbarNav li a:hover {
+    color: #12e115;
+    transform: scale(1.2);
+}
+
+.navbar.dropdown-menu {
+    position: relative;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    height: 9vh;
+    width: auto;
+    transition: 0.3s;
+}
+
+.navbar .logo:hover {
+    transform: scale(1.1);
+}
+
+.dropdown .btn {
+    background-color: transparent;
+    margin: 0%;
+}
+
+.dropdown-menu .dropdown-item {
+    font-weight: bold;
+    color: #ffffff;
+    background-color: transparent;
+}
+.dropdown-menu .list-unstyled {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    justify-content: center;
+    text-align: center;
+}
+.list-unstyled .dropdown-submenu{
+    margin: 0px;
+}
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    font-weight: bold;
+    color: #022a80;
+    background-color: #065da6;
+}
+
+.dropdown-menu {
+    background-color: #022a80;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 100%;
+    left: 20%;
+    margin: top 0.5rem;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.frutas {
+    height: 27px;
+    width: auto;
+}
+
+/*---------------------------------------------- End NavBar ------------------------------------------------------ */
+
+.frutas-foother {
+    height: inherit;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.frutas-foother img {
+    height: 4.3vw;
+    transition: .1s ease-in-out;
+}
+
+.frutas-foother img:hover {
+    transform: scale(1.4);
+}
+
+.frutas-foother a {
+    width: calc(100% / 22);
+}
+
+
+
+.footer {
+    background-color: #065da6;
+}
+
+.footer a {
+    color: #ffffff;
+    font-size: 0.7em;
+    text-decoration: none;
+    transition: 3ms;
+}
+
+footer a:hover {
+    color: #12e115;
+}

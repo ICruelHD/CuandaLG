@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-image: url("../assets/img/fondo.png");
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.contenedor-energia .container {
+  max-width: 90%;
+  min-height: 100vh;
+  flex-wrap: nowrap;
+  display: flex;
+}
+
+.contenedor-energia h2 {
+  width: 100%;
+  display: block;
+  color: #022a80;
+  font-weight: bold;
+  font-size: 4rem;
+  border-bottom: transparent solid 2.2vh;
+  margin-bottom: 1.5rem;
+  align-items: end;
+}
+
+.bloque-texto{
+  display: block;
+  margin-top: 10vh;
+  align-items: center;
+}
+
+.bloque-imagen img {
+  width: 40vw;
+  height: auto;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.container .bloque-imagen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bloque-texto p {
+  width: 100%;
+  display: block;
+  color: #022a80;
+  font-weight: bold;
+}
+
+.bloque-texto,
+.bloque-imagen {
+  flex: 1 0 50%;
+  position: relative;
+}
+
+
+/* Estilos para pantallas pequeñas */
+@media (max-width:960px) {
+  .contenedor-energia .bloque-imagen {
+    display: none;
+  }
+  .bloque-texto p {
+    color: #022a80;
+    font-weight: bold;
+  }
+
+}
+
+#read-more-btn {
+  background-color: #022a80;
+  border-radius: 20px;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.additional-text {
+  display: none;
+  transition: opacity 0.5s ease, max-height 0.5s ease;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.show {
+  display: block !important;
+  opacity: 1;
+  max-height: 1000px;
+  transition: opacity 0.5s ease, max-height 0.5s ease;
+}

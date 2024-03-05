@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    width: 100%;
+    height: auto;
+}
+#contact {
+    flex: 1;
+    background-image: url("../assets/img/contactanos_fondo.png");
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    min-height: 130vh;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.contact h1 {
+    font-size: 2em;
+    color: #022a80;
+    padding: 5px;
+}
+
+.contact h2 {
+    font-size: 1.5em;
+    color: #022a80;
+    font-weight: 400;
+}
+
+.contact select {
+    background-color: #022a80;
+    padding: 5px;
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.contact p {
+    color: black;
+    font-size: 1em;
+}
+
+.contact label {
+    color: black;
+    font-size: 1em;
+}
+
+.contact input {
+    border-color: red;
+}
+
+.contact #Estado {
+    border-color: red;
+    background-color: white;
+    color: black;
+}
+
+.contact textarea {
+    border-color: red;
+}
+
+.contact .btn-primary {
+    background: #065da6;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffffff;
+    border: 15px;
+    padding: 5 10em;
+}
+
+.contact .btn-primary:hover {
+    background: #022a80;
+}
+
+.contact #espacio {
+    padding-top: 50px;
+}
+
+.contact .informacion {
+    color: #065da6;
+    font-size: 1em;
+    text-decoration: none;
+}
