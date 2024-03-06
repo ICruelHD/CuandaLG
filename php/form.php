@@ -8,19 +8,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $Estado = $_POST['Estado'];
     $Alcaldia = $_POST['Alcaldia'];
+    $CodigoP = $_POST['CP'];
     $telefono = $_POST['Telefono'];
     $mensaje = nl2br($_POST['mensaje']);
 
     // Determina el destinatario basado en el valor enviado
     switch ($destinatarioCodigo) {
         case "dest1":
-            $destinatarioEmail = "lsca_Gabriel_HS@Hotmail.com";
+            $destinatarioEmail = "quejas@cuanda.com.mx";
             break;
         case "dest2":
-            $destinatarioEmail = "lsca_Gabriel_HS@Hotmail.com";
+            $destinatarioEmail = "ventas@cuanda.com.mx";
             break;
         case "dest3":
-            $destinatarioEmail = "lsca_Gabriel_HS@Hotmail.com";
+            $destinatarioEmail = "proveedores@cuanda.com.mx";
             break;
         default:
             echo "Destinatario no válido.";
