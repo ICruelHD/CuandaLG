@@ -122,9 +122,14 @@ body h1 {
   max-height: 30vh;
   margin-right: 1vw;
   width: calc(100% / 4);
-
 }
-
+.timeline-image{
+  transition: 3ms;
+}
+.timeline-image:hover{
+  transform: scale(2);
+  z-index: 1000;
+}
 @media (max-width: 768px) {
   .carousel-item img {
     max-width: 100%;
