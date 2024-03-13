@@ -1,5 +1,5 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     $destinatarioCodigo = $_POST['asunto'];
 
     $Empresa = $_POST['Empresa'];
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $message =
-        'Empresa: $Empresa\n' .
+        "Empresa: $Empresa\n" .
         "Nombre: $Nombre\n" .
         "Correo: $email\n" .
         "Estado: $Estado\n" .
@@ -38,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "No. telefónico: $telefono\n" .
         "Mensaje: $mensaje";
 
-    // Encabezados adicionales
     $headers = "From: $email" . "\r\n" .
         "Reply-To: $email" . "\r\n" .
         "X-Mailer: PHP/" . phpversion();
@@ -51,7 +50,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Hubo un error al enviar el mensaje.";
     }
-} else {
-    echo "Método no permitido";
-}
 ?>
