@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     switch ($destinatarioCodigo) {
         case "dest1":
             $destinatarioEmail = "Lsca_gabriel_hs@hotmail.com";
+            
             break;
         case "dest2":
             $destinatarioEmail = "Lsca_gabriel_hs@hotmail.com";
@@ -53,3 +54,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Método no permitido";
 }
+?>
