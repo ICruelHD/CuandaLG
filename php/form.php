@@ -1,5 +1,4 @@
 <?php
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Capturar datos del formulario
     $asuntoSeleccionado = $_POST['asunto'];
@@ -16,33 +15,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $destinatario = '';
     switch ($asuntoSeleccionado) {
         case 'dest1':
-            $destinatario = 'LSCA_Gabriel_HS@Hotmail.com'; // Reemplazar con el correo real
+            $destinatario = 'LSCA_Gabriel_HS@Hotmail.com'; 
             break;
         case 'dest2':
-            $destinatario = 'LSCA_Gabriel_HS@Hotmail.com'; // Reemplazar con el correo real
+            $destinatario = 'LSCA_Gabriel_HS@Hotmail.com'; 
             break;
         case 'dest3':
-            $destinatario = 'LSCA_Gabriel_HS@Hotmail.com'; // Reemplazar con el correo real
+            $destinatario = 'LSCA_Gabriel_HS@Hotmail.com'; 
             break;
         default:
-            // Opción no válida o no seleccionada
             die('Selecciona un asunto válido.');
     }
 
     // Definir el asunto del correo y el cuerpo del mensaje
     $asuntoCorreo = "Nuevo mensaje: " . $asuntoSeleccionado;
-    $mensajeCorreo = "Recibiste un mensaje de: $nombre, $empresa\nCorreo: $correo\nEstado: $estado, C.P.: $cp, Alcaldía: $alcaldia\nTeléfono: $telefono\nMensaje:\n$mensaje";
+    $mensajeCorreo = "Recibiste un mensaje de: $nombre, 
+                    $empresa\n
+                    Correo: $correo\n
+                    Estado: $estado, C.P.: $cp, Alcaldía: $alcaldia\n
+                    Teléfono: $telefono\n
+                    Mensaje:\n$mensaje";
 
     // Encabezados para el correo
-    $cabeceras = "From: tu_correo@example.com";
+    $headers = "From: tu_correo@example.com";
 
     // Enviar el correo
-    if (mail($destinatario, $asuntoCorreo, $mensajeCorreo, $cabeceras)) {
+    if (mail($destinatario, $asuntoCorreo, $mensajeCorreo, $headers)) {
         echo "Correo enviado exitosamente a {$destinatario}";
     } else {
         echo "No se pudo enviar el correo.";
     }
 } else {
-    // Redirigir al usuario al formulario si intentan acceder a este script directamente
-    header('Location: ../formulario.html'); // Asegúrate de usar la ruta correcta al formulario
+    header('Location: ../formulario.html');
 }
