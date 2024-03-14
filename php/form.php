@@ -16,13 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $destinatario = '';
     switch ($asuntoSeleccionado) {
         case 'dest1':
-            $destinatario = 'correo1@example.com'; 
+            $destinatario = 'lsca_gabriel_hs@hotmail.com'; 
             break;
         case 'dest2':
-            $destinatario = 'correo2@example.com'; 
+            $destinatario = 'lsca_gabriel_hs@hotmail.com'; 
             break;
         case 'dest3':
-            $destinatario = 'correo3@example.com';
+            $destinatario = 'lsca_gabriel_hs@hotmail.com';
             break;
     }
 
