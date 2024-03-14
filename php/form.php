@@ -1,50 +1,56 @@
 <?php
+// Verificar si se accedió al script mediante una solicitud POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Capturar datos del formulario
+    // Obtener los datos del formulario
     $asuntoSeleccionado = $_POST['asunto'];
     $empresa = $_POST['Empresa'];
     $nombre = $_POST['Nombre'];
-    $correo = $_POST['email'];
+    $email = $_POST['email'];
     $estado = $_POST['Estado'];
     $cp = $_POST['CP'];
     $alcaldia = $_POST['Alcaldia'];
     $telefono = $_POST['Telefono'];
     $mensaje = $_POST['mensaje'];
-
-    // Determinar el destinatario basado en la selección del asunto
+    
+    // Definir el destinatario del correo electrónico según la selección del asunto
     $destinatario = '';
     switch ($asuntoSeleccionado) {
         case 'dest1':
-            $destinatario = 'LSCA_Gabriel_HS@Hotmail.com'; 
+            $destinatario = 'correo1@example.com'; 
             break;
         case 'dest2':
-            $destinatario = 'LSCA_Gabriel_HS@Hotmail.com'; 
+            $destinatario = 'correo2@example.com'; 
             break;
         case 'dest3':
-            $destinatario = 'LSCA_Gabriel_HS@Hotmail.com'; 
+            $destinatario = 'correo3@example.com';
             break;
-        default:
-            die('Selecciona un asunto válido.');
     }
 
-    // Definir el asunto del correo y el cuerpo del mensaje
-    $asuntoCorreo = "Nuevo mensaje: " . $asuntoSeleccionado;
-    $mensajeCorreo = "Recibiste un mensaje de: $nombre, 
-                    $empresa\n
-                    Correo: $correo\n
-                    Estado: $estado, C.P.: $cp, Alcaldía: $alcaldia\n
-                    Teléfono: $telefono\n
-                    Mensaje:\n$mensaje";
+    // Verificar si se ha establecido un destinatario
+    if (!empty($destinatario)) {
+        // Preparar el mensaje de correo electrónico
+        $asunto = "Nuevo mensaje: " . $asuntoSeleccionado;
+        $contenido =    "De: $nombre\n
+                        Empresa: $empresa\n
+                        Email: $email\n
+                        Estado: $estado\n
+                        Código Postal: $cp\n
+                        Alcaldía: $alcaldia\n
+                        Teléfono: $telefono\n
+                        Mensaje:\n$mensaje";
+        $cabeceras = "From: $email";
 
-    // Encabezados para el correo
-    $headers = "From: tu_correo@example.com";
-
-    // Enviar el correo
-    if (mail($destinatario, $asuntoCorreo, $mensajeCorreo, $headers)) {
-        echo "Correo enviado exitosamente a {$destinatario}";
+        // Enviar el correo electrónico
+        if (mail($destinatario, $asunto, $contenido, $cabeceras)) {
+            echo "Correo enviado exitosamente a {$destinatario}";
+        } else {
+            echo "No se pudo enviar el correo.";
+        }
     } else {
-        echo "No se pudo enviar el correo.";
+        echo "No se ha seleccionado un destinatario válido.";
     }
 } else {
-    header('Location: ../formulario.html');
+    // Redirigir al usuario al formulario si intentan acceder a este script directamente
+    header('Location: ../index.html'); // Asegúrate de que esta ruta sea correcta
 }
+?>
