@@ -19,10 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $destinatario = 'lsca_gabriel_hs@hotmail.com'; 
             break;
         case 'dest2':
-            $destinatario = 'lsca_gabriel_hs@hotmail.com'; 
+            $destinatario = 'lsca_hs@hotmail.com'; 
             break;
         case 'dest3':
-            $destinatario = 'lsca_gabriel_hs@hotmail.com';
+            $destinatario = 'Gabriel@hotmail.com';
             break;
     }
 
@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Enviar el correo electrónico
         if (mail($destinatario, $asunto, $contenido, $cabeceras)) {
             echo "Correo enviado exitosamente a {$destinatario}";
+           
         } else {
             echo "No se pudo enviar el correo.";
         }
