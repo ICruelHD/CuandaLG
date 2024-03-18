@@ -24,13 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $destinatarioEmail = '';
     switch ($asuntoSeleccionado) {
         case 'dest1':
-            $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com';
+            $destinatarioEmail = 'quejas@cuanda.com.mx';
             break;
         case 'dest2':
-            $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com';
+            $destinatarioEmail = 'ventas@cuanda.com.mx';
             break;
         case 'dest3':
-            $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com';
+            $destinatarioEmail = 'proveedores@cuanda.com.mx';
             break;
     }
 
