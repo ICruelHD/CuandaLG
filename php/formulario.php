@@ -24,13 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $destinatarioEmail = '';
     switch ($asuntoSeleccionado) {
         case 'dest1':
-            $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com'; // Reemplaza con el correo real para 'dest1'
+            $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com';
             break;
         case 'dest2':
-            $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com'; // Reemplaza con el correo real para 'dest2'
+            $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com';
             break;
         case 'dest3':
-            $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com'; // Reemplaza con el correo real para 'dest3'
+            $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com';
             break;
     }
 
