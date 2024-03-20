@@ -18,9 +18,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // Configuración del servidor SMTP de Office 365
         $mail->isSMTP();
+        
         $mail->Host = 'smtp.office365.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'desarrollo@cuanda.com';
+        $mail->Username = 'desarrollo@cuanda.com.mx';
         $mail->Password = 'Xog417271'; 
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
@@ -35,10 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com'; // Reemplaza con el correo real para 'dest1'
                 break;
             case 'dest2':
-                $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com'; // Reemplaza con el correo real para 'dest2'
+                $destinatarioEmail = 'lsca_gabriel_hs1@hotmail.com'; // Reemplaza con el correo real para 'dest2'
                 break;
             case 'dest3':
-                $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com'; // Reemplaza con el correo real para 'dest3'
+                $destinatarioEmail = 'lsca_gabriel_hs2@hotmail.com'; // Reemplaza con el correo real para 'dest3'
                 break;
         }
 
@@ -46,12 +47,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->addAddress($destinatarioEmail);   // Añadir destinatario
 
             // Contenido
-            $mail->isHTML(true); // Ajusta a false si prefieres enviar el correo en texto plano
+            $mail->isHTML(true); 
             $mail->Subject = "Nuevo mensaje de $nombre";
             $mail->Body    ="De: $nombre<br>
                             Empresa: $empresa<br>
                             Email: $emailFormulario<br>
                             Mensaje:<br>$mensaje";
+
             $mail->AltBody = "De: $nombre\nEmpresa: $empresa\nEmail: $emailFormulario\nMensaje:\n$mensaje";
 
             $mail->send();
