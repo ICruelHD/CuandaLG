@@ -1,18 +1,18 @@
 <?php
-require './CuandaLG/vendor/autoload.php';
+require '../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtener los datos del formulario
+    // Obtencion de los datos del formulario
     $asuntoSeleccionado = $_POST['asunto'];
     $empresa = $_POST['Empresa'];
     $nombre = $_POST['Nombre'];
     $emailFormulario = $_POST['email'];
     $mensaje = $_POST['mensaje'];
 
-    // Instanciar PHPMailer
+    // Instancia PHPMailer
     $mail = new PHPMailer(true);
 
     try {
@@ -20,8 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host = 'smtp.office365.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'desarrollo@cuanda.com'; // Sustituye por tu correo electrónico de Office 365
-        $mail->Password = 'Xog417271'; // Sustituye por tu contraseña
+        $mail->Username = 'desarrollo@cuanda.com';
+        $mail->Password = 'Xog417271'; 
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
