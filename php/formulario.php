@@ -1,61 +1,66 @@
 <?php
-require 'vendor/autoload.php'; // Asegura que esta ruta sea correcta.
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+Composer require PHPMailer/phpnailer;
+require 'vendor/autoload.php'; // Asegúrate de que esta ruta sea correcta.
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener los datos del formulario
     $asuntoSeleccionado = $_POST['asunto'];
     $empresa = $_POST['Empresa'];
     $nombre = $_POST['Nombre'];
-    $emailFormulario = $_POST['email']; // Asegúrate de que el campo 'name' en tu formulario sea 'email'
+    $emailFormulario = $_POST['email']; 
     $mensaje = $_POST['mensaje'];
 
-    // Preparar el contenido del correo
-    $contenido = "De: $nombre\n
-                Empresa: $empresa\n
-                Email: $emailFormulario\n
-                Mensaje:\n$mensaje";
+    // Instanciar PHPMailer
+    $mail = new PHPMailer(true);
 
-    // Usa tu API Key de SendGrid aquí
-    $sendgridApiKey = 'TU_API_KEY_AQUÍ';
-    $email = new \SendGrid\Mail\Mail(); 
-    $email->setFrom("tu_correo@example.com", "Tu Nombre o Empresa");
+    try {
+        // Configuración del servidor SMTP de Office 365
+        $mail->isSMTP();
+        $mail->Host = 'smtp.office365.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'desarrollo@cuanda.com'; // Sustituye por tu correo electrónico de Office 365
+        $mail->Password = 'Xog417271'; // Sustituye por tu contraseña
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
 
-    // Seleccionar el destinatario según el asunto
-    $destinatarioEmail = '';
-    switch ($asuntoSeleccionado) {
-        case 'dest1':
-            $destinatarioEmail = 'quejas@cuanda.com.mx';
-            break;
-        case 'dest2':
-            $destinatarioEmail = 'ventas@cuanda.com.mx';
-            break;
-        case 'dest3':
-            $destinatarioEmail = 'proveedores@cuanda.com.mx';
-            break;
-    }
+        // Remitente
+        $mail->setFrom('desarrollo@cuanda.com', 'Cuanda S.A de S.V.');
 
-    if (!empty($destinatarioEmail)) {
-        $email->addTo($destinatarioEmail, 'Nombre del Destinatario');
-        $email->setSubject("Nuevo mensaje: " . $asuntoSeleccionado);
-        $email->addContent("text/plain", $contenido);
-
-        $sendgrid = new \SendGrid($sendgridApiKey);
-
-        try {
-            $response = $sendgrid->send($email);
-            if ($response->statusCode() == 202) { // 202 Accepted
-                echo "Correo enviado exitosamente a {$destinatarioEmail}";
-            } else {
-                echo "No se pudo enviar el correo. Código de respuesta: " . $response->statusCode();
-            }
-        } catch (Exception $e) {
-            echo 'Capturado error de SendGrid: '. $e->getMessage() ."\n";
+        // Destinatario, determinado por la selección en el formulario
+        $destinatarioEmail = '';
+        switch ($asuntoSeleccionado) {
+            case 'dest1':
+                $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com'; // Reemplaza con el correo real para 'dest1'
+                break;
+            case 'dest2':
+                $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com'; // Reemplaza con el correo real para 'dest2'
+                break;
+            case 'dest3':
+                $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com'; // Reemplaza con el correo real para 'dest3'
+                break;
         }
-    } else {
-        echo "No se ha seleccionado un destinatario válido.";
+
+        if (!empty($destinatarioEmail)) {
+            $mail->addAddress($destinatarioEmail);   // Añadir destinatario
+
+            // Contenido
+            $mail->isHTML(true); // Ajusta a false si prefieres enviar el correo en texto plano
+            $mail->Subject = "Nuevo mensaje de $nombre";
+            $mail->Body    = "De: $nombre<br>Empresa: $empresa<br>Email: $emailFormulario<br>Mensaje:<br>$mensaje";
+            $mail->AltBody = "De: $nombre\nEmpresa: $empresa\nEmail: $emailFormulario\nMensaje:\n$mensaje";
+
+            $mail->send();
+            echo "Correo enviado exitosamente a {$destinatarioEmail}";
+        } else {
+            echo "No se ha seleccionado un destinatario válido.";
+        }
+    } catch (Exception $e) {
+        echo "No se pudo enviar el correo. Error: {$mail->ErrorInfo}";
     }
 } else {
     // Redirigir al usuario al formulario si intentan acceder a este script directamente
-    header('Location: ../index.html'); // Asegúrate de que esta ruta sea correcta
+    header('Location: ../index.html');
 }
 ?>
