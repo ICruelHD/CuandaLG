@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php';
+require './CuandaLG/vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -48,7 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Contenido
             $mail->isHTML(true); // Ajusta a false si prefieres enviar el correo en texto plano
             $mail->Subject = "Nuevo mensaje de $nombre";
-            $mail->Body    = "De: $nombre<br>Empresa: $empresa<br>Email: $emailFormulario<br>Mensaje:<br>$mensaje";
+            $mail->Body    ="De: $nombre<br>
+                            Empresa: $empresa<br>
+                            Email: $emailFormulario<br>
+                            Mensaje:<br>$mensaje";
             $mail->AltBody = "De: $nombre\nEmpresa: $empresa\nEmail: $emailFormulario\nMensaje:\n$mensaje";
 
             $mail->send();
@@ -61,5 +64,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 } else {
     // Redirigir al usuario al formulario si intentan acceder a este script directamente
-    header('Location: ../index.html');
+    header('Location: contacto.html');
 }
