@@ -20,6 +20,10 @@ class ComposerStaticInit716e58094f37c66d3d8b275e0e0cd086
             'SendGrid\\Contacts\\' => 18,
             'SendGrid\\' => 9,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -46,6 +50,10 @@ class ComposerStaticInit716e58094f37c66d3d8b275e0e0cd086
         'SendGrid\\' => 
         array (
             0 => __DIR__ . '/..' . '/sendgrid/php-http-client/lib',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
     );
 

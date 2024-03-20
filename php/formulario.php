@@ -1,15 +1,15 @@
 <?php
+require 'vendor/autoload.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-Composer require PHPMailer/phpnailer;
-require 'vendor/autoload.php'; // Asegúrate de que esta ruta sea correcta.
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener los datos del formulario
     $asuntoSeleccionado = $_POST['asunto'];
     $empresa = $_POST['Empresa'];
     $nombre = $_POST['Nombre'];
-    $emailFormulario = $_POST['email']; 
+    $emailFormulario = $_POST['email'];
     $mensaje = $_POST['mensaje'];
 
     // Instanciar PHPMailer
@@ -63,4 +63,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Redirigir al usuario al formulario si intentan acceder a este script directamente
     header('Location: ../index.html');
 }
-?>
