@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Port = 587;
 
         // Remitente
-        $mail->setFrom('desarrollo@cuanda.com', 'Cuanda S.A de S.V.');
+        $mail->setFrom('desarrollo@cuanda.com.mx', 'Cuanda S.A de S.V.');
 
         // Destinatario, determinado por la selección en el formulario
         $destinatarioEmail = '';
