@@ -35,10 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com'; // Reemplaza con el correo real para 'dest1'
                 break;
             case 'dest2':
-                $destinatarioEmail = 'lsca_gabriel_hs1@hotmail.com'; // Reemplaza con el correo real para 'dest2'
+                $destinatarioEmail = 'lsca_gabriel_h@hotmail.com'; // Reemplaza con el correo real para 'dest2'
                 break;
             case 'dest3':
-                $destinatarioEmail = 'lsca_gabriel_hs2@hotmail.com'; // Reemplaza con el correo real para 'dest3'
+                $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com'; // Reemplaza con el correo real para 'dest3'
                 break;
         }
 
