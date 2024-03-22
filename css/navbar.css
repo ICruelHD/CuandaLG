@@ -142,11 +142,11 @@ body {
 }
 
 .frutas-foother img:hover {
-    transform: scale(1.4);
+    transform: scale(1.3);
 }
 
 .frutas-foother a {
-    width: calc(100% / 22);
+    width: calc(100% / 23);
 }
 
 
