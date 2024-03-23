@@ -68,11 +68,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->AltBody = "De: $nombre\nEmpresa: $empresa\nEmail: $emailFormulario\nMensaje:\n$mensaje";
 
             $mail->send();
-            echo "Correo enviado exitosamente a {$destinatarioEmail}";
-            header('Location: contacto.html');
+            echo "¡¡¡Correo enviado exitosamente!!!";
         } else {
             echo "No se ha seleccionado un destinatario válido.";
-            header('Location: contacto.html');
         }
     } catch (Exception $e) {
         echo "No se pudo enviar el correo. Error: {$mail->ErrorInfo}";
