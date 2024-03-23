@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             Estado: $Estado<br>
                             Alcaldia/ Municipio: $alcaldia<br>
                             C.P: $cp <br>
-                            Teléfono: $telefono<br>
+                            Telefono: $telefono<br>
                             Mensaje:<br>$mensaje";
 
             $mail->AltBody = "De: $nombre\nEmpresa: $empresa\nEmail: $emailFormulario\nMensaje:\n$mensaje";

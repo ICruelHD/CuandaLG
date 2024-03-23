@@ -187,7 +187,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="./dulces/pachi.html#item1">Tira 10 pzas.</a>
                                     </li>
-                                    <li><a class="dropdown-item" href="./dulces/pachi1.html"#item2>Bolsa 20 pzas.</a>
+                                    <li><a class="dropdown-item" href="./dulces/pachi1.html" #item2>Bolsa 20 pzas.</a>
                                     </li>
                                 </ul>
                             </li>
@@ -360,6 +360,23 @@
 
                                 </div>
                             </form>
+                            <script>
+                                document.getElementById('formularioemail').addEventListener('submit', function (event) {
+                                    event.preventDefault(); // Prevenir el envío normal del formulario
+
+                                    let formData = new FormData(this); // Crear los datos del formulario
+
+                                    fetch('../php/formulario.php', { // La ruta a tu script PHP
+                                        method: 'POST',
+                                        body: formData
+                                    })
+                                        .then(response => response.json()) // Asumiendo que tu PHP devuelve JSON
+                                        .then(data => {
+                                            alert('Mensaje enviado: ' + data.mensaje); // Mostrar mensaje emergente
+                                        })
+                                        .catch(error => console.error('Error:', error));
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
