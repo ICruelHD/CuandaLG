@@ -10,6 +10,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $empresa = $_POST['Empresa'];
     $nombre = $_POST['Nombre'];
     $emailFormulario = $_POST['email'];
+    $Estado = $_POST['Estado' ];
+    $cp= $_POST['CP']; 
+    $alcaldia = $_POST['Alcaldia'];
+    $telefono = $_POST['Telefono'];
     $mensaje = $_POST['mensaje'];
 
     // Instancia PHPMailer
@@ -30,15 +34,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Destinatario, determinado por la selección en el formulario
         $destinatarioEmail = '';
+        $mensajeasunto= '';
         switch ($asuntoSeleccionado) {
             case 'dest1':
                 $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com'; 
+                $mensajeasunto = 'Tengo una queja y/o sugerencia';
                 break;
             case 'dest2':
                 $destinatarioEmail = 'lsca_gabriel_h@hotmail.com'; 
+                $mensajeasunto = 'Quiero comprar un producto';
                 break;
             case 'dest3':
                 $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com'; 
+                $mensajeasunto ='Quiero ser proveedor';
                 break;
         }
 
@@ -51,6 +59,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Body    ="De: $nombre<br>
                             Empresa: $empresa<br>
                             Email: $emailFormulario<br>
+                            Estado: $Estado<br>
+                            Alcaldia/ Municipio: $alcaldia<br>
+                            C.P: $cp <br>
+                            Teléfono: $telefono<br>
                             Mensaje:<br>$mensaje";
 
             $mail->AltBody = "De: $nombre\nEmpresa: $empresa\nEmail: $emailFormulario\nMensaje:\n$mensaje";

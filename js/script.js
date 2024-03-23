@@ -131,7 +131,7 @@ function toggleImages(selectedCarouselId) {
 function ampliarImagen(imagen) {
     var contenedorAmpliado = document.getElementById('contenedorAmpliado');
     var imagenAmpliada = document.getElementById('imagenAmpliada');
-    imagenAmpliada.src = imagen.src.replace("_pequeña", ""); // Asumiendo que las imágenes ampliadas no tienen "_pequeña" en el nombre de archivo
+    imagenAmpliada.src = imagen.src.replace("_pequeña", "");
     contenedorAmpliado.style.display = "flex";
 }
 
