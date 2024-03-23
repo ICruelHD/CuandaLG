@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Contenido
             $mail->isHTML(true); 
-            $mail->Subject = "Nuevo mensaje de $nombre";
+            $mail->Subject = "$mensajeasunto";
             $mail->Body    ="De: $nombre<br>
                             Empresa: $empresa<br>
                             Email: $emailFormulario<br>
