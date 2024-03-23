@@ -361,20 +361,21 @@
                                 </div>
                             </form>
                             <script>
-                                document.getElementById('formularioemail').addEventListener('submit', function (event) {
+                                $('#formularioemail').submit(function (event) {
                                     event.preventDefault(); // Prevenir el envío normal del formulario
 
-                                    let formData = new FormData(this); // Crear los datos del formulario
-
-                                    fetch('../php/formulario.php', { // La ruta a tu script PHP
-                                        method: 'POST',
-                                        body: formData
-                                    })
-                                        .then(response => response.json()) // Asumiendo que tu PHP devuelve JSON
-                                        .then(data => {
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '../php/formulario.php', // La ruta a tu script PHP
+                                        data: $(this).serialize(), // Serializa los datos del formulario
+                                        dataType: 'json', // Tipo de datos esperados en la respuesta
+                                        success: function (data) {
                                             alert('Mensaje enviado: ' + data.mensaje); // Mostrar mensaje emergente
-                                        })
-                                        .catch(error => console.error('Error:', error));
+                                        },
+                                        error: function (xhr, status, error) {
+                                            console.error('Error:', error);
+                                        }
+                                    });
                                 });
                             </script>
                         </div>

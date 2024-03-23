@@ -10,8 +10,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $empresa = $_POST['Empresa'];
     $nombre = $_POST['Nombre'];
     $emailFormulario = $_POST['email'];
-    $Estado = $_POST['Estado' ];
-    $cp= $_POST['CP']; 
+    $Estado = $_POST['Estado'];
+    $cp = $_POST['CP'];
     $alcaldia = $_POST['Alcaldia'];
     $telefono = $_POST['Telefono'];
     $mensaje = $_POST['mensaje'];
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Host = 'smtp.office365.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'desarrollo@cuanda.com.mx';
-        $mail->Password = 'Xog417271'; 
+        $mail->Password = 'Xog417271';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
@@ -34,19 +34,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Destinatario, determinado por la selección en el formulario
         $destinatarioEmail = '';
-        $mensajeasunto= '';
+        $mensajeasunto = '';
         switch ($asuntoSeleccionado) {
             case 'dest1':
-                $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com'; 
+                $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com';
                 $mensajeasunto = 'Tengo una queja y/o sugerencia';
                 break;
             case 'dest2':
-                $destinatarioEmail = 'lsca_gabriel_h@hotmail.com'; 
+                $destinatarioEmail = 'lsca_gabriel_h@hotmail.com';
                 $mensajeasunto = 'Quiero comprar un producto';
                 break;
             case 'dest3':
-                $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com'; 
-                $mensajeasunto ='Quiero ser proveedor';
+                $destinatarioEmail = 'lsca_gabriel_hs@hotmail.com';
+                $mensajeasunto = 'Quiero ser proveedor';
                 break;
         }
 
@@ -54,9 +54,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->addAddress($destinatarioEmail);   // Añadir destinatario
 
             // Contenido
-            $mail->isHTML(true); 
+            $mail->isHTML(true);
             $mail->Subject = "$mensajeasunto";
-            $mail->Body    ="De: $nombre<br>
+            $mail->Body    = "De: $nombre<br>
                             Empresa: $empresa<br>
                             Email: $emailFormulario<br>
                             Estado: $Estado<br>
@@ -69,8 +69,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $mail->send();
             echo "Correo enviado exitosamente a {$destinatarioEmail}";
+            header('Location: contacto.html');
         } else {
             echo "No se ha seleccionado un destinatario válido.";
+            header('Location: contacto.html');
         }
     } catch (Exception $e) {
         echo "No se pudo enviar el correo. Error: {$mail->ErrorInfo}";
