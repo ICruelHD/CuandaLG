@@ -276,7 +276,7 @@
                     <h2>¿En qué podemos ayudarte?</h2>
                     <div class="row">
                         <div class="col-12">
-                            <form method="post" action="../php/formulario.php" id="formularioemail">
+                            <form id="formularioemail">
                                 <div class="col-12">
                                     <select id="asunto" name="asunto" class="form-select" aria-label=".">
                                         <option selected>Selecciona</option>
@@ -360,26 +360,30 @@
 
                                 </div>
                             </form>
-                            <script>
-                                $('#formularioemail').submit(function (event) {
-                                    event.preventDefault(); // Prevenir el envío normal del formulario
-
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '../php/formulario.php', // La ruta a tu script PHP
-                                        data: $(this).serialize(), // Serializa los datos del formulario
-                                        dataType: 'json', // Tipo de datos esperados en la respuesta
-                                        success: function (data) {
-                                            alert('Mensaje enviado: ' + data.mensaje); // Mostrar mensaje emergente
-                                        },
-                                        error: function (xhr, status, error) {
-                                            console.error('Error:', error);
-                                        }
-                                    });
-                                });
-                            </script>
                         </div>
                     </div>
+                    <div id="mensajeRespuesta"></div>
+                    <script>
+                        document.getElementById('formularioemail').addEventListener('submit', function (e) {
+                            e.preventDefault(); // Prevenir el envío normal del formulario
+
+                            // Preparar los datos del formulario para enviarlos
+                            var formData = new FormData(this);
+
+                            // Enviar los datos a tu script PHP mediante Fetch
+                            fetch('../php/formulario.php', {
+                                method: 'POST',
+                                body: formData,
+                            })
+                                .then(response => response.text()) // o .json() si tu PHP devuelve JSON
+                                .then(data => {
+                                    // Mostrar la respuesta en un div o como alerta
+                                    document.getElementById('mensajeRespuesta').innerText = data; // Mostrar respuesta del servidor
+                                    // alert(data); // O mostrar un alerta
+                                })
+                                .catch(error => console.error('Error:', error));
+                        });
+                    </script>
                 </div>
                 <div class="col-xs-12 col-md-4 col-lg-4">
                     <div class="col-lg-12 col-xs-0 col-md-12" id="espacio"><br><br></div>
